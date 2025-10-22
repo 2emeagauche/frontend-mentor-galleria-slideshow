@@ -3,7 +3,7 @@ import { DialogContext } from "./context/DialogContext"
 import data from "../assets/data/data.json"
 
 function SlideShowFooter(){
-  const {infoId} = useContext(DialogContext)
+  const {infoId, handleSlideShowNavigation} = useContext(DialogContext)
 
   return(
     <div>
@@ -13,10 +13,10 @@ function SlideShowFooter(){
           <p>{data[infoId].artist.name}</p>
         </div>
         <div>
-          <button>
+          <button onClick={() => handleSlideShowNavigation(infoId, "prev")}>
             <span className="sr-only">Previous</span>
           </button>
-          <button>
+          <button onClick={() => handleSlideShowNavigation(infoId, "next")}>
             <span className="sr-only">Next</span>
           </button>
         </div>
