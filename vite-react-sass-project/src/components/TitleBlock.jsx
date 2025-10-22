@@ -1,10 +1,9 @@
 import { useState, useRef, useContext } from "react"
 import { DialogContext } from "./context/DialogContext"
-import HeroSmallImage from '../assets/images/starry-night/hero-small.jpg'
-import ArtistImage from '../assets/images/starry-night/artist.jpg'
-import GalleryImage from '../assets/images/starry-night/gallery.jpg'
 
 import data from "../assets/data/data.json"
+
+import { getImageUrl } from "./utils/getImageUrl"
 
 function TitleBlock(){
   const {infoId} = useContext(DialogContext)
@@ -19,11 +18,11 @@ function TitleBlock(){
   return(
     <div>
       <div>
-        <img src={HeroSmallImage} alt="" />
+        <img src={getImageUrl(data[infoId].images.folder, data[infoId].images.hero.small)} alt="" />
         <button onClick={toggleDialog}>View image</button>
         <dialog ref={galleryDialogRef}>
           <button onClick={toggleDialog}>Close</button>
-          <img src={GalleryImage} alt="" />
+          <img src={getImageUrl(data[infoId].images.folder, data[infoId].images.gallery)} alt="" />
         </dialog>
       </div>
       <div>
@@ -31,7 +30,7 @@ function TitleBlock(){
         <p>{data[infoId].artist.name}</p>
       </div>
       <div>
-        <img src={ArtistImage} alt="" />
+        <img src={getImageUrl(data[infoId].images.folder, data[infoId].artist.image)} alt="" />
       </div>
     </div>
   )
