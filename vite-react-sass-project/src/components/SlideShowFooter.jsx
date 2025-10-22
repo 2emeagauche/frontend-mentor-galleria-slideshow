@@ -1,10 +1,16 @@
+import { useContext } from "react"
+import { DialogContext } from "./context/DialogContext"
+import data from "../assets/data/data.json"
+
 function SlideShowFooter(){
+  const {infoId} = useContext(DialogContext)
+
   return(
     <div>
       <nav>
         <div>
-          <h4>Starry Night</h4>
-          <p>Vincent Van Gogh</p>
+          <h4>{data[infoId].name}</h4>
+          <p>{data[infoId].artist.name}</p>
         </div>
         <div>
           <button>

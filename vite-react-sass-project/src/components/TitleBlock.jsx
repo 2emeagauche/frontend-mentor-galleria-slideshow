@@ -1,9 +1,13 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useContext } from "react"
+import { DialogContext } from "./context/DialogContext"
 import HeroSmallImage from '../assets/images/starry-night/hero-small.jpg'
 import ArtistImage from '../assets/images/starry-night/artist.jpg'
 import GalleryImage from '../assets/images/starry-night/gallery.jpg'
 
+import data from "../assets/data/data.json"
+
 function TitleBlock(){
+  const {infoId} = useContext(DialogContext)
   const [galleryDialogOpen, setGalleryDialogOpen] = useState(false)
   const galleryDialogRef = useRef(null)
 
@@ -23,8 +27,8 @@ function TitleBlock(){
         </dialog>
       </div>
       <div>
-        <h2>Starry Night</h2>
-        <p>Vincent Van Gogh</p>
+        <h2>{data[infoId].name}</h2>
+        <p>{data[infoId].artist.name}</p>
       </div>
       <div>
         <img src={ArtistImage} alt="" />

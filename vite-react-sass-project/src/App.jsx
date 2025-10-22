@@ -3,22 +3,32 @@ import { DialogContext } from "./components/context/DialogContext"
 import Header from "./components/Header"
 import Card from "./components/Card"
 import SlideShow from "./components/SlideShow"
+import data from "./assets/data/data.json"
 
 function App() {
   const [dialogOpen, setDialogOpen] = useState(false)
+  const [infoId, setInfoId] = useState(0)
   const dialogRef = useRef(null)
 
-  const toggleDialog = () => {
+  function toggleDialog(infoId) {
     setDialogOpen(!dialogOpen)
-    dialogOpen ? dialogRef.current.close() : dialogRef.current.showModal()
+    if(dialogOpen) {
+      dialogRef.current.close()
+    } else {
+      dialogRef.current.showModal()
+      setInfoId(infoId)
+    }
+    
   }
 
   return (
     <>
-      <DialogContext value={{dialogOpen: dialogOpen, handleDialog:toggleDialog, dialogRef: dialogRef}}>
+      <DialogContext value={{dialogOpen: dialogOpen, handleDialog: toggleDialog, dialogRef: dialogRef, infoId: infoId}}>
         <Header />
         <div>
-          <Card />
+          {
+            data.map((info, i) => <Card key={i} infoId={i} info={info} />)
+          }
         </div>
         <SlideShow />
       </DialogContext>
