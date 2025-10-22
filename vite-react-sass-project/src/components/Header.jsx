@@ -1,8 +1,13 @@
+import { useContext } from "react"
+import { DialogContext } from "./context/DialogContext"
+
 function Header(){
+  const {dialogOpen, handleDialog} = useContext(DialogContext)
+
   return(
     <div>
       <h1>Galleria</h1>
-      <button>Open Slideshow</button>
+      <button onClick={handleDialog}>{`${dialogOpen?'Close':'Open'} Slideshow`}</button>
     </div>
   )
 }

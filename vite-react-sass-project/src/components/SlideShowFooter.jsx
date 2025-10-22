@@ -1,4 +1,4 @@
-function GalleryFooter(){
+function SlideShowFooter(){
   return(
     <div>
       <nav>
@@ -19,4 +19,4 @@ function GalleryFooter(){
   )
 }
 
-export default GalleryFooter
+export default SlideShowFooter

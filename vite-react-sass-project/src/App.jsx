@@ -1,16 +1,27 @@
+import { useState, useRef } from "react"
+import { DialogContext } from "./components/context/DialogContext"
 import Header from "./components/Header"
 import Card from "./components/Card"
-import InfoSheet from "./components/InfoSheet"
+import SlideShow from "./components/SlideShow"
 
 function App() {
+  const [dialogOpen, setDialogOpen] = useState(false)
+  const dialogRef = useRef(null)
+
+  const toggleDialog = () => {
+    setDialogOpen(!dialogOpen)
+    dialogOpen ? dialogRef.current.close() : dialogRef.current.showModal()
+  }
 
   return (
     <>
-      <Header />
-      <div>
-        <Card />
-      </div>
-      <InfoSheet />
+      <DialogContext value={{dialogOpen: dialogOpen, handleDialog:toggleDialog, dialogRef: dialogRef}}>
+        <Header />
+        <div>
+          <Card />
+        </div>
+        <SlideShow />
+      </DialogContext>
     </>
   )
 }
