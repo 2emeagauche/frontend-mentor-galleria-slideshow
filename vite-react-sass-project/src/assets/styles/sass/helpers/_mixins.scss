@@ -1,0 +1,27 @@
+@use "sass:map";
+@use 'variables' as v;
+
+// breakpoints mobile first
+@mixin breakpoint($size) {
+  $breakpoint-value: map.get(v.$breakpoints, $size);
+  
+  @if $breakpoint-value == null {
+    @error "Breakpoint '#{$size}' n'existe pas dans la map $breakpoints.";
+  }
+  
+  @if $breakpoint-value == 0 {
+    // Pour 'xs', pas de media query nécessaire (mobile-first)
+    @content;
+  } @else {
+    @media screen and (min-width: $breakpoint-value) {
+      @content;
+    }
+  }
+}
+
+// Typography
+@mixin font-libre-baskerville {
+  font-family: "Libre Baskerville", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}

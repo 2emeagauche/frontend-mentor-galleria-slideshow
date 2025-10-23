@@ -1,0 +1,82 @@
+@use "sass:map";
+@use '../helpers/variables' as v;
+@use '../helpers/mixins' as mx;
+@use '../helpers/typography' as typo;
+
+// General
+body{
+  @include mx.font-libre-baskerville;
+  @include typo.text-preset-3;
+}
+
+h1, h2, ul, p{
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+a{
+  text-decoration: none;
+}
+
+button{
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem map.get(v.$gutter, "mobile");
+  border-bottom: .0625rem solid v.$grey-150;
+  
+  &_button{
+    @include typo.text-preset-5;
+    text-transform: uppercase;
+    color: v.$grey-400;
+    
+  }
+}
+
+.cards-layout{
+  padding: 1.5rem map.get(v.$gutter, "mobile");
+  width: 100%;
+}
+
+.card{
+  margin-bottom: 2.5rem;
+  position: relative;
+
+  &_visual{
+    width: 100%;
+  }
+
+  &_infos{
+    position: absolute;
+    z-index: 10;
+    bottom: 2rem;
+    left: 2rem;
+    right: 2rem;
+    color: white;
+  }
+
+  &_title{
+    @include typo.text-preset-2;
+    margin-bottom: .5rem;
+  }
+  &_artist{
+    @include typo.text-preset-5;
+    color: v.$grey-200;
+  }
+
+  &_button{
+    position: absolute;
+    z-index: 5;
+    inset:0;
+    width: 100%;
+    background-image: v.$gradient;
+  }
+
+}
