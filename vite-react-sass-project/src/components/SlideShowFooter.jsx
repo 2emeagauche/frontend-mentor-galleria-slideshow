@@ -1,47 +1,41 @@
 import { useContext } from "react"
 import { DialogContext } from "./context/DialogContext"
+import { usePrevNextButtons } from "./embla-utils/usePrevNextButtons"
+import { PrevButton, NextButton } from "./embla-utils/EmblaCarouselArrowButtons"
 import data from "../assets/data/data.json"
 
-const dataSize = data.length
+function SlideShowFooter({emblaApi, onAutoplayButtonClick}){
+  const {infoId} = useContext(DialogContext)
 
-function SlideShowFooter(){
-  const {infoId, setInfoId} = useContext(DialogContext)
-
-  function handleSlideShowNavigation(infoId, direction){
-    let newId = 0
-    if(direction === "next") {
-      if (infoId >= 0 && infoId < dataSize - 1) {
-        newId = infoId + 1
-      } else {
-        newId = 0
-      }
-    } else {
-      if (infoId > 0 && infoId < dataSize) {
-        newId = infoId - 1
-      } else {
-        newId = dataSize - 1
-      }
-    }
-    setInfoId(newId)
-  }
+  const {
+    prevBtnDisabled,
+    nextBtnDisabled,
+    onPrevButtonClick,
+    onNextButtonClick
+  } = usePrevNextButtons(emblaApi)
 
   return(
-    <div>
-      <nav>
+    <>
+    <div className="footer-top-separator"></div>
+    <div className="slide-footer">
+      <div className="footer_container">
         <div>
-          <h4>{data[infoId].name}</h4>
-          <p>{data[infoId].artist.name}</p>
+          <h4 className="footer_title">{data[infoId].name}</h4>
+          <p className="footer_name">{data[infoId].artist.name}</p>
         </div>
-        <div>
-          <button onClick={() => handleSlideShowNavigation(infoId, "prev")}>
-            <span className="sr-only">Previous</span>
-          </button>
-          <button onClick={() => handleSlideShowNavigation(infoId, "next")}>
-            <span className="sr-only">Next</span>
-          </button>
-        </div>
-      </nav>
+        <nav className="footer_nav">
+          <PrevButton
+            onClick={() => onAutoplayButtonClick(onPrevButtonClick)}
+            disabled={prevBtnDisabled}
+          />
+          <NextButton
+            onClick={() => onAutoplayButtonClick(onNextButtonClick)}
+            disabled={nextBtnDisabled}
+          />
+        </nav>
+      </div>
     </div>
+    </>
   )
 }
 

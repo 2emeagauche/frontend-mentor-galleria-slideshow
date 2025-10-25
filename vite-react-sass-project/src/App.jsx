@@ -11,10 +11,12 @@ import data from "./assets/data/data.json"
 function App() {
   const [dialogOpen, setDialogOpen] = useState(false)
   const [infoId, setInfoId] = useState(0)
+  const [start, setStart] = useState(false)
   const dialogRef = useRef(null)
 
-  function toggleDialog(infoId) {
+  function toggleDialog(infoId, startSlideshow) {
     setDialogOpen(!dialogOpen)
+    setStart(startSlideshow)
     if(dialogOpen) {
       dialogRef.current.close()
     } else {
@@ -29,7 +31,8 @@ function App() {
                               handleDialog: toggleDialog,
                               dialogRef: dialogRef,
                               infoId: infoId,
-                              setInfoId: setInfoId
+                              setInfoId: setInfoId,
+                              startSlideshow: start
                             }}>
         <Header />
         <div className="cards-layout">

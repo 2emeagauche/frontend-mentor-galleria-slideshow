@@ -6,5 +6,7 @@
 @use 'helpers/_mixins.scss' as mx;
 @use 'helpers/_sr-only.scss';
 @use 'helpers/_typography.scss';
+// Components
+@use 'components/_embla-carousel.scss';
 // Layout
 @use 'layout/_index.scss';
