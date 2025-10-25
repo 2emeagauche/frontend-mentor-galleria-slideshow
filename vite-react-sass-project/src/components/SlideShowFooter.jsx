@@ -6,7 +6,8 @@ import data from "../assets/data/data.json"
 
 function SlideShowFooter({emblaApi, onAutoplayButtonClick}){
   const {infoId} = useContext(DialogContext)
-
+  const dataLength = data.length
+  const progressionRate = 100 * ((infoId + 1) / dataLength)
   const {
     prevBtnDisabled,
     nextBtnDisabled,
@@ -16,7 +17,7 @@ function SlideShowFooter({emblaApi, onAutoplayButtonClick}){
 
   return(
     <>
-    <div className="footer-top-separator"></div>
+    <div className="footer-top-separator" style={{backgroundImage: `linear-gradient(90deg, #000000 ${progressionRate}%, hsl(0, 0%, 90%) ${progressionRate}%)`}}></div>
     <div className="slide-footer">
       <div className="footer_container">
         <div>
