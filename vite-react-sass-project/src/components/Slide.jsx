@@ -15,7 +15,7 @@ function Slide({infos}){
     <div className="embla__slide slide">
       <div className="slide-block1">
         <div className="slide-view">
-          <img className="slide-preview" src={getImageUrl(infos.images.folder, infos.images.hero.small)} alt="" />
+          <img className="slide-preview" src={getImageUrl(infos.images.folder, infos.images.hero.large)} alt="" />
           <button className="slide-view_button-open" onClick={toggleDialog}>
             <img src={viewImage} alt="" />
             <span>View image</span>
