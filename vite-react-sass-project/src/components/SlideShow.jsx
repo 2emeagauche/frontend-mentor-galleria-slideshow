@@ -1,6 +1,5 @@
 import { useContext, useCallback, useEffect } from "react"
 import { DialogContext } from './context/DialogContext'
-import Header from "./Header"
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import { useAutoplay } from "./embla-utils/useAutoplay"
@@ -9,9 +8,9 @@ import SlideShowFooter from "./SlideShowFooter"
 import data from "../assets/data/data.json"
 
 function SlideShow() {
-  const { dialogRef, infoId, setInfoId, startSlideshow } = useContext(DialogContext)
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay({ playOnInit: false })])
-  const { toggleAutoplay, onAutoplayButtonClick } = useAutoplay(emblaApi)
+  const { infoId, setInfoId, startSlideshow } = useContext(DialogContext)
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay({ playOnInit: startSlideshow })])
+  const { onAutoplayButtonClick } = useAutoplay(emblaApi)
 
   useEffect(() => {
     if (emblaApi) emblaApi.scrollTo(infoId)
@@ -32,22 +31,8 @@ function SlideShow() {
     [emblaApi, updateGlobalIndex]
   )
 
-  const playOnStart = useCallback((emblaApi) => {
-    toggleAutoplay()
-    emblaApi.off('slidesInView', playOnStart)
-  },
-    [toggleAutoplay])
-
-  useEffect(() => {
-    if (emblaApi && startSlideshow) emblaApi.on('slidesInView', playOnStart)
-  },
-    [emblaApi, playOnStart, startSlideshow]
-  )
-
-
   return (
-    <dialog className="dialog-slideshow" ref={dialogRef}>
-      <Header />
+    <div className="dialog-slideshow">
       <div className="embla slideshow">
         <div className="embla__viewport slideshow__viewport" ref={emblaRef}>
           <div className="embla__container">
@@ -62,7 +47,7 @@ function SlideShow() {
         </div>
         <SlideShowFooter emblaApi={emblaApi} onAutoplayButtonClick={onAutoplayButtonClick} />
       </div>
-    </dialog>
+    </div>
   )
 }
 

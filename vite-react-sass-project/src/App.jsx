@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState } from "react"
 import { DialogContext } from "./components/context/DialogContext"
 import "./assets/styles/sass/main.scss"
 import Header from "./components/Header"
@@ -9,38 +9,37 @@ import data from "./assets/data/data.json"
 
 
 function App() {
-  const [dialogOpen, setDialogOpen] = useState(false)
+  const [slideshowOpen, setSlideshowOpen] = useState(false)
   const [infoId, setInfoId] = useState(0)
   const [start, setStart] = useState(false)
-  const dialogRef = useRef(null)
 
-  function toggleDialog(infoId, startSlideshow) {
-    setDialogOpen(!dialogOpen)
+  function toggleSlideshow(infoId, startSlideshow) {
+    setSlideshowOpen(!slideshowOpen)
     setStart(startSlideshow)
-    if(dialogOpen) {
-      dialogRef.current.close()
-    } else {
-      dialogRef.current.showModal()
+    if(!slideshowOpen) {
       setInfoId(infoId)
     }
   }
 
   return (
     <div className="global-wrapper">
-      <DialogContext value={{ dialogOpen: dialogOpen,
-                              handleDialog: toggleDialog,
-                              dialogRef: dialogRef,
+      <DialogContext value={{ slideshowOpen: slideshowOpen,
+                              handleSlideshow: toggleSlideshow,
                               infoId: infoId,
                               setInfoId: setInfoId,
                               startSlideshow: start
                             }}>
         <Header />
-        <div className="cards-layout">
-          {
-            data.map((info, i) => <Card key={i} infoId={i} info={info} />)
-          }
-        </div>
-        <SlideShow />
+        {
+          slideshowOpen ?
+          <SlideShow />
+          :
+          <div className="cards-layout">
+            {
+              data.map((info, i) => <Card key={i} infoId={i} info={info} />)
+            }
+          </div>
+        } 
       </DialogContext>
     </div>
   )

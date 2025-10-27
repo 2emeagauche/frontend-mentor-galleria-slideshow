@@ -3,7 +3,7 @@ import { DialogContext } from './context/DialogContext'
 import { getImageUrl } from "./utils/getImageUrl"
 
 function Card({infoId, info}){
-  const {handleDialog} = useContext(DialogContext)
+  const {handleSlideshow} = useContext(DialogContext)
 
   return(
     <div className="card">
@@ -12,7 +12,7 @@ function Card({infoId, info}){
         <h2 className="card_title">{info.name}</h2>
         <p className="card_artist">{info.artist.name}</p>
       </div>
-      <button className="card_button" onClick={()=>handleDialog(infoId, false)}>
+      <button className="card_button" onClick={()=>handleSlideshow(infoId, false)}>
         <span className="sr-only">Open information sheet</span>
       </button>
     </div>
