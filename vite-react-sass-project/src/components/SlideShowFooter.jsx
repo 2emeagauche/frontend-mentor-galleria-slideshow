@@ -16,7 +16,7 @@ function SlideShowFooter({emblaApi, onAutoplayButtonClick}){
   } = usePrevNextButtons(emblaApi)
 
   return(
-    <>
+    <div>
     <div className="footer-top-separator" style={{backgroundImage: `linear-gradient(90deg, #000000 ${progressionRate}%, hsl(0, 0%, 90%) ${progressionRate}%)`}}></div>
     <div className="slide-footer">
       <div className="footer_container">
@@ -36,7 +36,7 @@ function SlideShowFooter({emblaApi, onAutoplayButtonClick}){
         </nav>
       </div>
     </div>
-    </>
+    </div>
   )
 }
 

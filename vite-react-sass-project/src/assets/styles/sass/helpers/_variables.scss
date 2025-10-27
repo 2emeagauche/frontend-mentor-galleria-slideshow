@@ -9,13 +9,15 @@ $gradient: linear-gradient(rgb(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 
 
 // breakpoints
 $breakpoints: (
-  'tablet': 35rem,
-  'desktop': 64rem,
+  'tablet-portrait': 35rem,
+  'tablet-landscape': 64rem,
+  'desktop': 90rem,
 );
 
 // side protection
 $gutter: (
   'mobile': 6.5%,
-  'tablet': 5%,
+  'tablet-portrait': 5%,
+  'tablet-landscape': 3%,
   'desktop': 0,
 );

@@ -49,7 +49,7 @@ function SlideShow() {
     <dialog className="dialog-slideshow" ref={dialogRef}>
       <Header />
       <div className="embla slideshow">
-        <div className="embla__viewport" ref={emblaRef}>
+        <div className="embla__viewport slideshow__viewport" ref={emblaRef}>
           <div className="embla__container">
             {
               data.map((infos, i) => {

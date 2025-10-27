@@ -26,7 +26,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className="global-wrapper">
       <DialogContext value={{ dialogOpen: dialogOpen,
                               handleDialog: toggleDialog,
                               dialogRef: dialogRef,
@@ -42,7 +42,7 @@ function App() {
         </div>
         <SlideShow />
       </DialogContext>
-    </>
+    </div>
   )
 }
 
