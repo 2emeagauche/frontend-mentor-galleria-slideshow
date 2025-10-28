@@ -21,12 +21,12 @@ function Slide({infos}){
             <img  className="slide-preview"
                   src={getImageUrl(infos.images.folder, infos.images.hero.small)} alt="" />
           </picture>
-          <button className="slide-view_button-open" onClick={toggleDialog}>
+          <button className="slide-view_button-open" onClick={toggleDialog} type="button">
             <img src={viewImage} alt="" />
             <span>View image</span>
           </button>
           <dialog ref={galleryDialogRef}>
-            <button className="slide-view_button-close" onClick={toggleDialog}>Close</button>
+            <button className="slide-view_button-close" onClick={toggleDialog} type="button">Close</button>
             <img src={getImageUrl(infos.images.folder, infos.images.gallery)} alt="" />
           </dialog>
         </div>

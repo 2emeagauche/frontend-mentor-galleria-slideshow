@@ -9,7 +9,7 @@ function Header(){
   return(
     <div className="header">
       <h1><img className="header_logo" src={Logo} alt="galleria" width="113" /><span className="sr-only">galleria</span></h1>
-      <button className="header_button" onClick={()=>handleSlideshow(0, !slideshowOpen)}>{`${slideshowOpen?'Stop':'Start'} Slideshow`}</button>
+      <button className="header_button" onClick={()=>handleSlideshow(0, !slideshowOpen)} type="button">{`${slideshowOpen?'Stop':'Start'} Slideshow`}</button>
     </div>
   )
 }
