@@ -13,7 +13,7 @@ function Card({infoId, info}){
         <h2 className="card_title">{info.name}</h2>
         <p className="card_artist">{info.artist.name}</p>
       </div>
-      <button className="card_button" onClick={()=>handleSlideshow(infoId, false)}>
+      <button className="card_button" onClick={()=>handleSlideshow(infoId, false)} type="button">
         <span className="sr-only">Open information sheet</span>
       </button>
     </div>

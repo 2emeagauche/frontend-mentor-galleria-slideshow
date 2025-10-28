@@ -50,13 +50,13 @@ Users should be able to:
 ### What I learned
 
 Using React Context
-Creating git branch to go in different direction than merging
+Creating new git branch then merging
 Using Vite config and .env variables for the Base url
 Deploying on Github with Action
 
 ### Continued development
 
-Go deeper with react hooks especially custom hooks.
+Go deeper with react optimization.
 
 ## Author
 
