@@ -1,0 +1,40 @@
+@use "sass:map";
+@use '../helpers/variables' as v;
+@use '../helpers/mixins' as mx;
+@use '../helpers/typography' as typo;
+
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem map.get(v.$gutter, "mobile");
+  border-bottom: .0625rem solid v.$grey-150;
+  @include mx.breakpoint('tablet-portrait'){
+    padding: 1.875rem map.get(v.$gutter, "tablet-portrait") 1.5rem;
+  }
+  @include mx.breakpoint('tablet-landscape'){
+    padding: 2.5rem 0;
+  }
+  
+  &_logo{
+    @include mx.breakpoint('tablet-landscape'){
+      width: 10.625rem;
+    }
+
+  }
+  
+  &_button{
+    @include typo.text-preset-5-mobile;
+    text-transform: uppercase;
+    color: v.$grey-400;
+    transition: color 0.3s;
+    @include mx.breakpoint('tablet-portrait'){
+      @include typo.text-preset-6;
+    }
+    &:hover, &:focus{
+      cursor: pointer;
+      color: black;
+    }
+  }
+}

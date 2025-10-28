@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { DialogContext } from "./context/DialogContext"
+import "../assets/styles/sass/components/_header.scss"
 import Logo from '../assets/images/shared/logo.svg'
 
 function Header(){

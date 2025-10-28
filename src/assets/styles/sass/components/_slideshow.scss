@@ -1,0 +1,25 @@
+@use "sass:map";
+@use '../helpers/variables' as v;
+@use '../helpers/mixins' as mx;
+@use '../helpers/typography' as typo;
+
+
+.slideshow{
+  @include mx.breakpoint('desktop'){
+    
+    padding: 0 map.get(v.$gutter, "desktop");
+    max-width: 90rem;
+    margin: auto;
+    height: calc(100vh - 8.125rem);
+
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  &__viewport{
+    @include mx.breakpoint('desktop'){
+      margin: auto 0;
+    }
+
+  }
+}

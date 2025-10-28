@@ -1,6 +1,7 @@
 import { useState, useRef } from "react"
 import { getImageUrl } from "./utils/getImageUrl"
 import viewImage from "../assets/images/shared/icon-view-image.svg"
+import "../assets/styles/sass/components/_slide.scss"
 
 function Slide({infos}){
   const [galleryDialogOpen, setGalleryDialogOpen] = useState(false)

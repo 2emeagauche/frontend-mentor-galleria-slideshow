@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { DialogContext } from "./context/DialogContext"
 import { usePrevNextButtons } from "./embla-utils/usePrevNextButtons"
 import { PrevButton, NextButton } from "./embla-utils/EmblaCarouselArrowButtons"
+import "../assets/styles/sass/components/_footer.scss"
 import data from "../assets/data/data.json"
 
 function SlideShowFooter({emblaApi, onAutoplayButtonClick}){

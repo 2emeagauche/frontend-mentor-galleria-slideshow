@@ -1,0 +1,67 @@
+@use "sass:map";
+@use '../helpers/variables' as v;
+@use '../helpers/mixins' as mx;
+@use '../helpers/typography' as typo;
+
+.cards-layout{
+  padding: 1.5rem map.get(v.$gutter, "mobile");
+  width: 100%;
+  @include mx.breakpoint('tablet-portrait'){
+    padding: 2.625rem map.get(v.$gutter, "tablet-portrait");
+    column-count:2;
+    column-gap:2.5rem;
+  }
+  @include mx.breakpoint('tablet-landscape'){
+    padding: 2.5rem 0;
+    column-count:3;
+  }
+  @include mx.breakpoint('desktop'){
+    column-count:4;
+  }
+}
+
+.card{
+  margin-bottom: 2.5rem;
+  position: relative;
+
+  &_visual{
+    width: 100%;
+    opacity: 1;
+    transition: opacity 300ms;
+  }
+
+  &_infos{
+    position: absolute;
+    z-index: 10;
+    bottom: 2rem;
+    left: 2rem;
+    right: 2rem;
+    color: white;
+  }
+
+  &_title{
+    @include typo.text-preset-2-mobile;
+    margin-bottom: .5rem;
+  }
+  &_artist{
+    @include typo.text-preset-5-mobile;
+    color: v.$grey-200;
+  }
+
+  &_button{
+    position: absolute;
+    z-index: 5;
+    inset:0;
+    width: 100%;
+    background-image: v.$gradient;
+  }
+  &:hover, &:focus{
+    .card_visual{
+      opacity: 0.5;
+    }
+    .card_button{
+      cursor: pointer;
+    }
+  }
+
+}

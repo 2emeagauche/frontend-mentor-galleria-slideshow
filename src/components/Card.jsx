@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { DialogContext } from './context/DialogContext'
 import { getImageUrl } from "./utils/getImageUrl"
+import "../assets/styles/sass/components/_card.scss"
 
 function Card({infoId, info}){
   const {handleSlideshow} = useContext(DialogContext)

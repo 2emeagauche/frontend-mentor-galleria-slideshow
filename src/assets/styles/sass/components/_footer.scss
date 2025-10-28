@@ -1,0 +1,59 @@
+@use "sass:map";
+@use '../helpers/variables' as v;
+@use '../helpers/mixins' as mx;
+@use '../helpers/typography' as typo;
+
+.footer-top-separator{
+  // background-image: linear-gradient(90deg, #000000 6.5%, hsl(0, 0%, 90%) 6.5%);
+  width: 100%;
+  height: .0625rem;
+}
+
+.slide-footer{
+  padding: 1rem map.get(v.$gutter, "mobile");
+  border-top: .0625rem solid v.$grey-150;
+  @include mx.breakpoint('tablet-portrait'){
+    padding: 1.5rem map.get(v.$gutter, "tablet-portrait");
+  }
+}
+
+.footer{
+  &_container{
+    display: flex;
+    justify-content: space-between;
+  }
+  &_title{
+    @include typo.text-preset-3-mobile;
+    @include mx.breakpoint('tablet-portrait'){
+      margin-bottom: 0.5rem;
+      @include typo.text-preset-3;
+    }
+  }
+  &_name{
+    @include typo.text-preset-4-mobile;
+    opacity: 0.75;
+    @include mx.breakpoint('tablet-portrait'){
+      @include typo.text-preset-5;
+    }
+  }
+  &_nav{
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  &_button{
+    img{
+      opacity: 1;
+      transition: opacity 0.3s;
+      @include mx.breakpoint('tablet-portrait'){
+        width: 1.5625rem;
+      }
+    }
+    &:hover, &:focus{
+      cursor: pointer;
+      img{
+        opacity: 0.5;
+      }
+    }
+  }
+}

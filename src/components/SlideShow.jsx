@@ -6,6 +6,7 @@ import { useAutoplay } from "./embla-utils/useAutoplay"
 import Slide from "./Slide"
 import SlideShowFooter from "./SlideShowFooter"
 import data from "../assets/data/data.json"
+import "../assets/styles/sass/components/_slideshow.scss"
 
 function SlideShow() {
   const { infoId, setInfoId, startSlideshow } = useContext(DialogContext)
@@ -32,21 +33,19 @@ function SlideShow() {
   )
 
   return (
-    <div className="dialog-slideshow">
-      <div className="embla slideshow">
-        <div className="embla__viewport slideshow__viewport" ref={emblaRef}>
-          <div className="embla__container">
-            {
-              data.map((infos, i) => {
-                return (
-                  <Slide key={i} infos={infos} />
-                )
-              })
-            }
-          </div>
+    <div className="embla slideshow">
+      <div className="embla__viewport slideshow__viewport" ref={emblaRef}>
+        <div className="embla__container">
+          {
+            data.map((infos, i) => {
+              return (
+                <Slide key={i} infos={infos} />
+              )
+            })
+          }
         </div>
-        <SlideShowFooter emblaApi={emblaApi} onAutoplayButtonClick={onAutoplayButtonClick} />
       </div>
+      <SlideShowFooter emblaApi={emblaApi} onAutoplayButtonClick={onAutoplayButtonClick} />
     </div>
   )
 }
